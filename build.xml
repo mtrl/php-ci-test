@@ -24,11 +24,10 @@
  </target>
 
  <target name="parallelTasks"
-         description="Run the pdepend, phpmd, phpcpd, phpcs, phpdoc and phploc tasks in parallel using a maximum of 2 threads.">
+         description="Run the pdepend, phpcpd, phpcs, phpdoc and phploc tasks in parallel using a maximum of 2 threads.">
   <parallel threadCount="2">
    <sequential>
     <antcall target="pdepend"/>
-    <antcall target="phpmd"/>
    </sequential>
    <antcall target="phpcpd"/>
    <antcall target="phpcs"/>
@@ -47,16 +46,6 @@
   </exec>
  </target>
 
- <target name="phpmd"
-         description="Generate pmd.xml using PHPMD">
-  <exec executable="phpmd">
-   <arg path="${source}" />
-   <arg value="xml" />
-   <arg value="${basedir}/build/phpmd.xml" />
-   <arg value="--reportfile" />
-   <arg value="${basedir}/build/logs/pmd.xml" />
-  </exec>
- </target>
 
  <target name="phpcpd"
          description="Generate pmd-cpd.xml using PHPCPD">
